@@ -288,6 +288,25 @@ pre code {
   margin-bottom: var(--space-4);
 }
 
+.header-cta {
+  background-color: var(--primary-color);
+  border-radius: var(--radius-md);
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+.header-cta:hover,
+.header-cta:focus-visible {
+  background-color: var(--primary-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 .badge-container {
   margin-top: var(--space-4);
 }
@@ -747,7 +766,8 @@ li {
 
 /* Print Styles */
 @media print {
-  .c-theme-toggle {
+  .c-theme-toggle,
+  .header-cta {
     display: none;
   }
 
