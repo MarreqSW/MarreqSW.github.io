@@ -66,11 +66,11 @@
         <span class="brand__name">Marreq</span>
       </a>
 
-      <nav class="nav" aria-label="Primary" data-nav>
+      <nav class="nav" aria-label="Primary">
         <ul class="nav__list">
           <li><a href="#product">Product</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#tour">Tour</a></li>
           <li><a href="#developers">Developers</a></li>
           <li><a href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -100,8 +100,8 @@
       <nav aria-label="Mobile">
         <ul class="mobile-nav__list">
           <li><a href="#product">Product</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#tour">Tour</a></li>
           <li><a href="#developers">Developers</a></li>
           <li><a href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -112,20 +112,19 @@
   </header>
 
   <main id="main">
-    <!-- Hero -->
+    <!-- 1. Hero -->
     <section class="hero" id="top">
-      <div class="hero__grid">
+      <div class="shell hero__grid">
         <div class="hero__copy">
           <p class="hero__brand">Marreq</p>
           <p class="eyebrow">Open source requirements engineering</p>
           <h1>Requirements engineering, without losing traceability.</h1>
           <p class="hero__lede">
-            Marreq is an open-source platform for managing hierarchical requirements, verification, approvals, and immutable baselines—with ReqIF, REST APIs, and optional MCP for AI assistants.
+            Hierarchical requirements, verification, approvals, and immutable baselines—with ReqIF, REST APIs, and optional MCP for AI assistants.
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">
-              Try Marreq
-              <span class="btn__arrow" aria-hidden="true">→</span>
+              Try Marreq <span class="btn__arrow" aria-hidden="true">→</span>
             </a>
             <a class="btn btn--secondary" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           </div>
@@ -137,7 +136,6 @@
             <li>MCP</li>
           </ul>
         </div>
-
         <div class="hero__visual">
           <div class="hero__motif" aria-hidden="true"></div>
           <figure class="browser-frame">
@@ -159,357 +157,239 @@
       </div>
     </section>
 
-    <!-- Capability strip -->
-    <section class="capability-strip" aria-label="Core capabilities">
-      <div class="capability-strip__inner">
-        <article class="capability">
-          <h2 class="capability__title">Requirements</h2>
-          <p>Versioned and structured</p>
-        </article>
-        <article class="capability">
-          <h2 class="capability__title">Traceability</h2>
-          <p>Requirements ↔ verification</p>
-        </article>
-        <article class="capability">
-          <h2 class="capability__title">Baselines</h2>
-          <p>Immutable snapshots</p>
-        </article>
-        <article class="capability">
-          <h2 class="capability__title">Open ecosystem</h2>
-          <p>ReqIF · REST · MCP</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Product intro -->
-    <section class="section" id="product">
-      <div class="section__inner section__inner--split">
-        <div>
-          <p class="eyebrow">Product</p>
-          <h2>Built for engineering teams that need an audit trail</h2>
-          <p class="section__lede">
-            Marreq keeps requirements, verifications, and their links under one project-scoped system.
-            Hierarchical structure, version history, review and approval, comments, and suspect-link handling
-            stay connected—so coverage and change impact remain visible as the product evolves.
-          </p>
-          <p>
-            Self-host with <code>marreq-server</code>, use the hosted demo at
-            <a href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">app.marreq.com</a>,
-            or integrate through the JSON API and optional MCP server.
-          </p>
+    <!-- 2. Product / core capabilities -->
+    <section class="band band--product" id="product">
+      <div class="shell">
+        <div class="product-intro">
+          <div class="product-intro__copy">
+            <p class="side-label">Product</p>
+            <h2>Built for teams that need an audit trail</h2>
+            <p>
+              Marreq keeps requirements, verifications, and their links under one project-scoped system—
+              so hierarchy, version history, approval, and suspect links stay visible as the product evolves.
+            </p>
+          </div>
+          <aside class="req-record" aria-label="Illustrative requirement record">
+            <div class="req-record__key">REQ-042</div>
+            <div class="req-record__title">Battery capacity requirement</div>
+            <dl class="req-record__meta">
+              <div><dt>Version</dt><dd>7</dd></div>
+              <div><dt>Approval</dt><dd><span class="pill pill--approved">Approved</span></dd></div>
+              <div><dt>Verification</dt><dd>3 linked</dd></div>
+              <div><dt>In baseline</dt><dd>Baseline 2</dd></div>
+            </dl>
+            <p class="req-record__note">Illustrative UI fragment — not live project data.</p>
+          </aside>
         </div>
-        <figure class="flow-diagram" aria-label="Marreq requirement lifecycle">
-          <svg viewBox="0 0 360 280" role="img" aria-labelledby="flow-title flow-desc">
-            <title id="flow-title">Requirement lifecycle in Marreq</title>
-            <desc id="flow-desc">Requirement flows through version history, approval, verification, traceability, and baseline.</desc>
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
-              </marker>
-            </defs>
-            <g class="flow-diagram__nodes" font-family="IBM Plex Sans, sans-serif" font-size="12" text-anchor="middle">
-              <rect class="flow-node" x="110" y="8" width="140" height="36" rx="10"></rect>
-              <text x="180" y="31" fill="currentColor">Requirement</text>
 
-              <rect class="flow-node" x="110" y="68" width="140" height="36" rx="10"></rect>
-              <text x="180" y="91" fill="currentColor">Version history</text>
-
-              <rect class="flow-node" x="110" y="128" width="140" height="36" rx="10"></rect>
-              <text x="180" y="151" fill="currentColor">Approval</text>
-
-              <rect class="flow-node flow-node--accent" x="16" y="188" width="120" height="36" rx="10"></rect>
-              <text x="76" y="211" fill="currentColor">Verification</text>
-
-              <rect class="flow-node flow-node--accent" x="148" y="188" width="120" height="36" rx="10"></rect>
-              <text x="208" y="211" fill="currentColor">Traceability</text>
-
-              <rect class="flow-node flow-node--strong" x="280" y="188" width="64" height="36" rx="10"></rect>
-              <text x="312" y="211" fill="currentColor" font-size="11">Baseline</text>
-            </g>
-            <g class="flow-diagram__edges" stroke="currentColor" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
-              <path d="M180 44 V68"></path>
-              <path d="M180 104 V128"></path>
-              <path d="M180 164 V178"></path>
-              <path d="M160 164 C120 164 76 170 76 188"></path>
-              <path d="M200 164 C240 164 208 170 208 188"></path>
-              <path d="M220 206 H280"></path>
-            </g>
-          </svg>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Features bento -->
-    <section class="section section--muted" id="features">
-      <div class="section__inner">
-        <header class="section__header">
-          <p class="eyebrow">Features</p>
-          <h2>Capabilities that stay connected</h2>
-          <p class="section__lede">Emphasis on the workflows engineering teams use every day—not a flat feature checklist.</p>
-        </header>
+        <ul class="capability-row" aria-label="Core capabilities">
+          <li><strong>Requirements</strong> Versioned and structured</li>
+          <li><strong>Traceability</strong> Requirements ↔ verification</li>
+          <li><strong>Baselines</strong> Immutable snapshots</li>
+          <li><strong>Open ecosystem</strong> ReqIF · REST · MCP</li>
+        </ul>
 
         <div class="bento">
-          <article class="bento__card bento__card--lg">
-            <div class="bento__meta">
-              <span class="chip">Core</span>
-              <h3>Requirements &amp; versioning</h3>
-              <p>Hierarchical requirements with immutable version history, metadata, categories, applicability, and comments. Editing an approved requirement creates a new draft version.</p>
-              <ul class="bento__list">
-                <li>Multi-project isolation</li>
-                <li>Version history &amp; diff</li>
-                <li>Comments on requirements and versions</li>
-              </ul>
-            </div>
-            <div class="bento__visual">
-              <img src="screenshots/requirements.png" alt="Marreq requirements list with keys, status, and approval columns" width="960" height="540" loading="lazy" decoding="async">
+          <article class="bento__item bento__item--feature">
+            <h3>Requirements</h3>
+            <p>Version every change. Keep the complete history.</p>
+            <div class="micro micro--versions" aria-hidden="true">
+              <span>v7 Approved</span>
+              <span>v6 Reviewed</span>
+              <span>v5 Draft</span>
             </div>
           </article>
-
-          <article class="bento__card">
-            <span class="chip">Trace</span>
+          <article class="bento__item">
             <h3>Traceability</h3>
-            <p>Link requirements to verifications. Matrix and coverage views surface gaps, orphans, and suspect links when related artifacts change.</p>
-            <div class="mini-trace" aria-hidden="true">
-              <span class="mini-trace__node">REQ-001</span>
-              <span class="mini-trace__line"></span>
-              <span class="mini-trace__node mini-trace__node--ver">VER-014</span>
+            <p>Cover requirements with verifications. Surface suspect links.</p>
+            <div class="micro micro--trace" aria-hidden="true">
+              <span>REQ-042</span><span class="micro__line"></span><span>VER-014</span>
             </div>
           </article>
-
-          <article class="bento__card">
-            <span class="chip">Snapshot</span>
-            <h3>Immutable baselines</h3>
-            <p>Point-in-time snapshots of requirement versions and the traceability matrix. Baselines cannot be updated or deleted—enforced in the database and API.</p>
+          <article class="bento__item">
+            <h3>Baselines</h3>
+            <p>Freeze requirement versions and the matrix at a point in time.</p>
           </article>
-
-          <article class="bento__card">
-            <span class="chip">Workflow</span>
-            <h3>Approval workflow</h3>
-            <div class="status-flow" aria-label="Approval states">
-              <span class="status-pill status-pill--draft">Draft</span>
-              <span aria-hidden="true">→</span>
-              <span class="status-pill status-pill--reviewed">Reviewed</span>
-              <span aria-hidden="true">→</span>
-              <span class="status-pill status-pill--approved">Approved</span>
+          <article class="bento__item">
+            <h3>Approval</h3>
+            <p>Draft → Reviewed → Approved, with project reviewers.</p>
+            <div class="status-flow" aria-hidden="true">
+              <span class="pill pill--draft">Draft</span>
+              <span>→</span>
+              <span class="pill pill--reviewed">Reviewed</span>
+              <span>→</span>
+              <span class="pill pill--approved">Approved</span>
             </div>
-            <p>Explicit, audit-friendly transitions for project reviewers. List filters for approved and not-approved requirements.</p>
           </article>
-
-          <article class="bento__card">
-            <span class="chip">Interop</span>
+          <article class="bento__item">
             <h3>ReqIF &amp; Excel</h3>
-            <p>Import and export requirements via ReqIF 1.2 and Excel/CSV. Export the live project or a specific baseline for audits and releases.</p>
+            <p>Import and export live projects or baselines.</p>
           </article>
-
-          <article class="bento__card">
-            <span class="chip">API</span>
-            <h3>API &amp; automation</h3>
-            <p>Project-scoped REST/JSON API with session and Bearer token auth—ready for CI, scripts, and headless clients.</p>
+          <article class="bento__item">
+            <h3>API</h3>
+            <p>Project-scoped REST/JSON with session or Bearer auth.</p>
           </article>
-
-          <article class="bento__card bento__card--wide">
-            <span class="chip chip--accent">AI-ready</span>
-            <h3>MCP for assistants and agents</h3>
-            <p>
-              An optional Model Context Protocol server exposes a controlled subset of Marreq capabilities to compatible AI assistants.
-              Modes range from read-only coverage and baselines to draft write and trace write—with audit events for tool calls.
-            </p>
-            <p class="bento__note">
-              Engineering requirements remain the core product. MCP is an integration surface, not a replacement for the UI or API.
-              <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/mcp-setup.md" target="_blank" rel="noopener noreferrer">MCP setup docs</a>
-            </p>
+          <article class="bento__item bento__item--wide">
+            <h3>MCP</h3>
+            <p>Optional tools for AI assistants—controlled modes from read-only to draft and trace write, with audit events. Requirements remain the core product.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Story: Requirements -->
-    <section class="section story" id="story-requirements">
-      <div class="section__inner story__grid">
-        <div class="story__copy">
-          <p class="eyebrow">Requirements that evolve</p>
-          <h2>Structure, history, and review in one place</h2>
-          <p>
-            Organize requirements hierarchically with categories, applicability, authors, and reviewers.
-            Track status and approval (Draft → Reviewed → Approved), discuss with comments, and inspect version history or diffs when content changes.
-          </p>
-          <ul class="check-list">
-            <li>Hierarchical parent/child relationships</li>
-            <li>Immutable version snapshots with structured diffs</li>
-            <li>Comments with optional version reference</li>
-            <li>Project reviewers for status and approval actions</li>
-          </ul>
-        </div>
-        <figure class="browser-frame browser-frame--story">
-          <img src="screenshots/requirement-detail.png" alt="Marreq requirement detail page with metadata and approval controls" width="1920" height="1080" loading="lazy" decoding="async">
-        </figure>
-      </div>
-    </section>
-
-    <!-- Story: Traceability -->
-    <section class="section story story--alt" id="story-traceability">
-      <div class="section__inner story__grid story__grid--reverse">
-        <div class="story__copy">
-          <p class="eyebrow">Trace everything</p>
-          <h2>See coverage between requirements and verification</h2>
-          <p>
-            Link requirements to verifications and inspect the matrix. Coverage reporting highlights requirements without tests, tests without requirements, and suspect links after related changes.
-          </p>
-          <ul class="check-list">
-            <li>Requirement ↔ verification links</li>
-            <li>Matrix with status indicators</li>
-            <li>Suspect-link handling</li>
-            <li>Excel export of the matrix</li>
-          </ul>
-        </div>
-        <figure class="browser-frame browser-frame--story">
-          <img src="screenshots/matrix.png" alt="Marreq traceability matrix mapping requirements to verification tests" width="1920" height="1080" loading="lazy" decoding="async">
-        </figure>
-      </div>
-
-      <div class="section__inner">
-        <figure class="trace-motif" aria-hidden="true">
-          <svg viewBox="0 0 720 160" class="trace-motif__svg">
-            <defs>
-              <linearGradient id="traceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="var(--brand)" stop-opacity="0.2"></stop>
-                <stop offset="100%" stop-color="var(--brand)" stop-opacity="0.8"></stop>
-              </linearGradient>
-            </defs>
-            <g fill="none" stroke="url(#traceGrad)" stroke-width="1.5" class="trace-motif__paths">
-              <path d="M90 40 C180 40 220 120 320 120"></path>
-              <path d="M90 120 C200 120 240 40 400 40"></path>
-              <path d="M320 120 C400 120 480 80 630 80"></path>
-              <path d="M400 40 C480 40 520 80 630 80"></path>
-            </g>
-            <g font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">
-              <rect class="trace-motif__node" x="30" y="22" width="90" height="36" rx="8"></rect>
-              <text x="75" y="45" fill="currentColor">REQ-001</text>
-              <rect class="trace-motif__node" x="30" y="102" width="90" height="36" rx="8"></rect>
-              <text x="75" y="125" fill="currentColor">REQ-002</text>
-              <rect class="trace-motif__node trace-motif__node--ver" x="275" y="102" width="90" height="36" rx="8"></rect>
-              <text x="320" y="125" fill="currentColor">VER-014</text>
-              <rect class="trace-motif__node trace-motif__node--ver" x="355" y="22" width="90" height="36" rx="8"></rect>
-              <text x="400" y="45" fill="currentColor">VER-021</text>
-              <rect class="trace-motif__node trace-motif__node--base" x="600" y="62" width="90" height="36" rx="8"></rect>
-              <text x="645" y="85" fill="currentColor">BASE-1</text>
-            </g>
-          </svg>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Story: Baselines -->
-    <section class="section story" id="story-baselines">
-      <div class="section__inner story__grid">
-        <div class="story__copy">
-          <p class="eyebrow">Freeze a trustworthy state</p>
-          <h2>Immutable baselines for audits and releases</h2>
-          <p>
-            Create a baseline to capture which requirement version was current and the traceability matrix at that moment.
-            Compare a baseline snapshot against the current project state, and export ReqIF from a specific baseline when you need a frozen interchange package.
-          </p>
-          <ul class="check-list">
-            <li>Immutable at database and API level</li>
-            <li>Requirement version + traceability snapshot</li>
-            <li>Diff versus current</li>
-            <li>ReqIF export from baseline</li>
-          </ul>
-        </div>
-        <figure class="browser-frame browser-frame--story">
-          <img src="screenshots/dashboard.png" alt="Marreq dashboard summarizing project health useful before creating a baseline" width="1920" height="1080" loading="lazy" decoding="async">
-          <figcaption class="story__caption">Project overview surfaces coverage health before you freeze a baseline.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Screenshots gallery -->
-    <section class="section section--muted" id="screenshots">
-      <div class="section__inner">
-        <header class="section__header">
-          <p class="eyebrow">Screenshots</p>
-          <h2>See Marreq in the product UI</h2>
-          <p class="section__lede">Current interface captures from the application. Select any image to enlarge.</p>
+    <!-- 3. How Marreq works -->
+    <section class="band band--works" id="how">
+      <div class="shell">
+        <header class="band__intro band__intro--center">
+          <p class="eyebrow eyebrow--on-dark">How Marreq works</p>
+          <h2>Three views of the same engineering record</h2>
         </header>
 
-        <div class="gallery" data-gallery>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/dashboard.png" data-caption="Dashboard — project overview and traceability health">
-            <img src="screenshots/dashboard.png" alt="Marreq dashboard" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Dashboard</span>
-          </button>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/requirements.png" data-caption="Requirements — hierarchical list with status and approval">
-            <img src="screenshots/requirements.png" alt="Marreq requirements list" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Requirements</span>
-          </button>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/requirement-detail.png" data-caption="Requirement detail — metadata, approval, and relationships">
-            <img src="screenshots/requirement-detail.png" alt="Marreq requirement detail" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Requirement detail</span>
-          </button>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/matrix.png" data-caption="Traceability matrix — requirements mapped to verifications">
-            <img src="screenshots/matrix.png" alt="Marreq traceability matrix" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Traceability matrix</span>
-          </button>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/tests.png" data-caption="Verification — manage and track test cases">
-            <img src="screenshots/tests.png" alt="Marreq verification management" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Verification</span>
-          </button>
-          <button type="button" class="gallery__item" data-screenshot="screenshots/categories.png" data-caption="Categories and applicability — project-scoped organization">
-            <img src="screenshots/categories.png" alt="Marreq categories management" width="1920" height="1080" loading="lazy" decoding="async">
-            <span class="gallery__label">Categories</span>
-          </button>
+        <!-- CSS radio tabs: content accessible without JavaScript -->
+        <div class="works">
+          <input class="works__radio" type="radio" name="works" id="works-req" checked>
+          <input class="works__radio" type="radio" name="works" id="works-trace">
+          <input class="works__radio" type="radio" name="works" id="works-base">
+
+          <div class="works__labels" role="presentation">
+            <label class="works__label" for="works-req">Requirements</label>
+            <label class="works__label" for="works-trace">Traceability</label>
+            <label class="works__label" for="works-base">Baselines</label>
+          </div>
+
+          <div class="works__panels">
+            <article class="works__panel works__panel--req">
+              <div class="works__copy">
+                <h3>Structure, history, and review</h3>
+                <p>Organize hierarchical requirements with metadata, comments, and immutable version history. Editing an approved requirement creates a new draft version.</p>
+                <ul class="check-list">
+                  <li>Hierarchy and project isolation</li>
+                  <li>Version history and structured diffs</li>
+                  <li>Draft → Reviewed → Approved</li>
+                  <li>Comments on requirements and versions</li>
+                </ul>
+              </div>
+              <figure class="browser-frame browser-frame--embed">
+                <img src="screenshots/requirement-detail.png" alt="Marreq requirement detail with metadata and approval" width="1920" height="1080" loading="lazy" decoding="async">
+              </figure>
+            </article>
+
+            <article class="works__panel works__panel--trace">
+              <div class="works__copy">
+                <h3>Coverage you can inspect</h3>
+                <p>Link requirements to verifications. The matrix and coverage views highlight gaps, orphans, and suspect links after related changes.</p>
+                <ul class="check-list">
+                  <li>Requirement ↔ verification links</li>
+                  <li>Status indicators in the matrix</li>
+                  <li>Suspect-link handling</li>
+                  <li>Excel export of the matrix</li>
+                </ul>
+                <div class="micro micro--trace-rows" aria-hidden="true">
+                  <div><span>REQ-042</span><span class="micro__line"></span><span>VER-014</span><span class="pill pill--ok">covered</span></div>
+                  <div><span>REQ-043</span><span class="micro__line micro__line--suspect"></span><span>VER-019</span><span class="pill pill--warn">suspect</span></div>
+                </div>
+              </div>
+              <figure class="browser-frame browser-frame--embed">
+                <img src="screenshots/matrix.png" alt="Marreq traceability matrix" width="1920" height="1080" loading="lazy" decoding="async">
+              </figure>
+            </article>
+
+            <article class="works__panel works__panel--base">
+              <div class="works__copy">
+                <h3>Freeze a trustworthy state</h3>
+                <p>A baseline captures which requirement version was current and the traceability matrix at that moment. Baselines are immutable at the database and API level, and can be diffed against current or exported as ReqIF.</p>
+                <ul class="check-list">
+                  <li>Immutable snapshots</li>
+                  <li>Requirement versions + matrix</li>
+                  <li>Diff versus current</li>
+                  <li>ReqIF export from baseline</li>
+                </ul>
+              </div>
+              <aside class="baseline-card" aria-label="Illustrative baseline summary">
+                <div class="baseline-card__chrome" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                  <span class="baseline-card__path">Baselines / Baseline 2026.09</span>
+                </div>
+                <h4>Baseline 2026.09</h4>
+                <p class="baseline-card__desc">Release candidate snapshot — illustrative example</p>
+                <dl class="baseline-card__stats">
+                  <div><dt>Requirements</dt><dd>48</dd></div>
+                  <div><dt>Verifications</dt><dd>32</dd></div>
+                  <div><dt>Trace links</dt><dd>84</dd></div>
+                </dl>
+                <ul class="baseline-card__rows">
+                  <li><span>REQ-PWR-001</span><span>v3</span><span class="pill pill--approved">Approved</span></li>
+                  <li><span>REQ-ACS-014</span><span>v2</span><span class="pill pill--approved">Approved</span></li>
+                  <li><span>REQ-COMM-007</span><span>v5</span><span class="pill pill--reviewed">Reviewed</span></li>
+                </ul>
+                <p class="baseline-card__note">Conceptual UI — not a live product screenshot.</p>
+              </aside>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Open source -->
-    <section class="section" id="open-source">
-      <div class="section__inner open-source">
-        <div>
-          <p class="eyebrow">Open by design</p>
-          <h2>Source available. Self-hostable. API-first.</h2>
-          <p class="section__lede">
-            Marreq is open source under the GNU Affero General Public License v3.
-            Run it yourself, inspect the implementation, and contribute improvements.
-          </p>
-          <ul class="attr-list attr-list--loose">
+    <!-- 4. Product tour -->
+    <section class="band band--tour" id="tour">
+      <div class="shell">
+        <div class="tour-head">
+          <div>
+            <p class="side-label">Product tour</p>
+            <h2>Inside the application</h2>
+          </div>
+          <p class="tour-head__lede">Screens not already featured above. Open any image for a closer look.</p>
+        </div>
+
+        <div class="tour" data-gallery>
+          <button type="button" class="tour__feature" data-screenshot="screenshots/requirements.png" data-caption="Requirements — hierarchical list with status and approval">
+            <img src="screenshots/requirements.png" alt="Marreq requirements list" width="1920" height="1080" loading="lazy" decoding="async">
+            <span class="tour__caption">Requirements list</span>
+          </button>
+          <div class="tour__stack">
+            <button type="button" class="tour__tile" data-screenshot="screenshots/tests.png" data-caption="Verification — manage and track test cases">
+              <img src="screenshots/tests.png" alt="Marreq verification management" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="tour__caption">Verification</span>
+            </button>
+            <button type="button" class="tour__tile" data-screenshot="screenshots/categories.png" data-caption="Categories and applicability — project-scoped organization">
+              <img src="screenshots/categories.png" alt="Marreq categories management" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="tour__caption">Categories</span>
+            </button>
+            <button type="button" class="tour__tile" data-screenshot="screenshots/dashboard.png" data-caption="Dashboard — project overview and traceability health">
+              <img src="screenshots/dashboard.png" alt="Marreq dashboard" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="tour__caption">Dashboard</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Open platform -->
+    <section class="band band--platform" id="platform">
+      <div class="shell platform">
+        <div class="platform__open">
+          <p class="side-label">Open platform</p>
+          <h2>Open by design</h2>
+          <p>Marreq is AGPL-3.0 licensed, self-hostable, and built around a Rust API and React SPA. Inspect the code, run it yourself, contribute improvements.</p>
+          <ul class="platform__attrs">
+            <li>AGPL-3.0</li>
+            <li>Self-hosted</li>
             <li>Rust backend</li>
             <li>React SPA</li>
             <li>PostgreSQL</li>
-            <li>Docker Compose</li>
-            <li>AGPL-3.0</li>
           </ul>
           <a class="btn btn--primary" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">
-            Explore Marreq on GitHub
-            <span class="btn__arrow" aria-hidden="true">→</span>
+            Explore Marreq on GitHub <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
+          <p class="platform__links">
+            <a href="https://github.com/MarreqSW/Marreq/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+            <a href="https://github.com/MarreqSW/Marreq/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+            <a href="https://github.com/MarreqSW/Marreq/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+          </p>
         </div>
-        <aside class="open-source__panel">
-          <h3>Contribute</h3>
-          <ul class="link-list">
-            <li><a href="https://github.com/MarreqSW/Marreq/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
-            <li><a href="https://github.com/MarreqSW/Marreq/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
-            <li><a href="https://github.com/MarreqSW/Marreq/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License (AGPL-3.0)</a></li>
-            <li><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Documentation index</a></li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Integrations -->
-    <section class="section section--muted" id="integrations">
-      <div class="section__inner">
-        <header class="section__header">
-          <p class="eyebrow">Interoperability</p>
-          <h2>Not a closed data silo</h2>
-          <p class="section__lede">Exchange requirements with your toolchain and automate around a stable API.</p>
-        </header>
-
-        <div class="ecosystem">
-          <div class="ecosystem__hub">
-            <img src="logo.png" alt="" width="48" height="33">
-            <strong>Marreq</strong>
-          </div>
-          <ul class="ecosystem__spokes">
+        <div class="platform__connect">
+          <h3>Built to connect</h3>
+          <ul class="connect-list">
             <li>
               <strong>REST API</strong>
               <span>JSON under <code>/api</code>, session or Bearer auth</span>
@@ -527,24 +407,21 @@
               <span>Import mapping and spreadsheet exports</span>
             </li>
           </ul>
+          <p class="platform__footnote">
+            Optional semantic search when embeddings are enabled.
+            <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/ollama-setup.md" target="_blank" rel="noopener noreferrer">Ollama setup</a>
+          </p>
         </div>
-        <p class="section__footnote">
-          Optional semantic search and RAG over requirements are available when embeddings are enabled.
-          See the <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/ollama-setup.md" target="_blank" rel="noopener noreferrer">Ollama setup guide</a>.
-        </p>
       </div>
     </section>
 
-    <!-- Developers / progressive disclosure -->
-    <section class="section" id="developers">
-      <div class="section__inner">
-        <header class="section__header">
-          <p class="eyebrow">Developers</p>
+    <!-- 6. Developers -->
+    <section class="band band--dev" id="developers">
+      <div class="shell">
+        <header class="band__intro">
+          <p class="side-label">Developers</p>
           <h2>Explore Marreq</h2>
-          <p class="section__lede">
-            Technical overview for getting started, using the product, integrating the API, and understanding the stack.
-            Full detail lives in the repository documentation.
-          </p>
+          <p>Get started, integrate the API, or dig into the architecture. Full documentation lives in the repository.</p>
         </header>
 
         <div class="explore" data-tabs>
@@ -558,84 +435,71 @@
           <div class="explore__panels">
             <div class="explore__panel" role="tabpanel" id="panel-quickstart" aria-labelledby="tab-quickstart" data-panel="quickstart">
               <h3>Run locally</h3>
-              <p>Prerequisites: Docker Compose, Rust (stable), clang/libclang for Excel export, and Node.js 20 for the SPA.</p>
+              <p>Prerequisites: Docker Compose, Rust (stable), clang/libclang, and Node.js 20 for the SPA.</p>
               <div class="terminal" tabindex="0">
                 <div class="terminal__bar" aria-hidden="true"><span></span><span></span><span></span><span class="terminal__title">quick start</span></div>
-                <pre><code># Start PostgreSQL (pgvector image via compose)
-docker compose -f docker/docker-compose.yml up -d db
-
-# Migrations (+ optional demo seed)
+                <pre><code>docker compose -f docker/docker-compose.yml up -d db
 ./marreq-core/scripts/db_setup.sh
 ./marreq-core/scripts/db_setup.sh --seed
-
-# API (self-hosted): http://127.0.0.1:8000/api
 cargo run -p marreq-server
-
-# SPA (dev): http://localhost:5173 — proxies /api
 cd frontend &amp;&amp; npm install &amp;&amp; npm run dev</code></pre>
               </div>
               <p>
-                Seeded demo admin: <code>alice</code> / <code>ChangeMe123!</code> (change after first login).
-                Full Docker stack (API + SPA on port 8080):
-                <code>docker compose -f docker/docker-compose.yml up -d</code>
+                Demo admin: <code>alice</code> / <code>ChangeMe123!</code>.
+                Full stack on port 8080: <code>docker compose -f docker/docker-compose.yml up -d</code>
               </p>
-              <p>
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/INSTALL.md" target="_blank" rel="noopener noreferrer">Installation guide</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/setup.md" target="_blank" rel="noopener noreferrer">Developer setup</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docker/README.md" target="_blank" rel="noopener noreferrer">Docker README</a>
+              <p class="doc-links">
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/INSTALL.md" target="_blank" rel="noopener noreferrer">Installation</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/setup.md" target="_blank" rel="noopener noreferrer">Setup guide</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docker/README.md" target="_blank" rel="noopener noreferrer">Docker</a>
               </p>
             </div>
 
             <div class="explore__panel" role="tabpanel" id="panel-guide" aria-labelledby="tab-guide" data-panel="guide" hidden>
               <h3>Using the web interface</h3>
-              <p>Sign in, select a project, then work from the in-app navigation.</p>
               <div class="guide-grid">
                 <article>
                   <h4>Requirements</h4>
-                  <p>Create and organize hierarchical requirements, filter by approval, manage metadata, comments, and version history.</p>
+                  <p>Hierarchy, approval filters, comments, version history.</p>
                 </article>
                 <article>
                   <h4>Verifications</h4>
-                  <p>Manage verification records, link them to requirements, and track status.</p>
+                  <p>Manage verification records and link them to requirements.</p>
                 </article>
                 <article>
                   <h4>Traceability</h4>
-                  <p>Use matrix and coverage views; clear or investigate suspect links after changes.</p>
+                  <p>Matrix and coverage; investigate suspect links.</p>
                 </article>
                 <article>
                   <h4>Baselines</h4>
-                  <p>Create immutable snapshots, inspect contents, diff versus current, export ReqIF from a baseline.</p>
+                  <p>Immutable snapshots, diff vs current, ReqIF export.</p>
                 </article>
                 <article>
                   <h4>Import / export</h4>
-                  <p>Excel/CSV and ReqIF import on the project Import page; Excel and ReqIF export from Reports or baseline views.</p>
+                  <p>Excel/CSV and ReqIF on the project Import and Reports pages.</p>
                 </article>
                 <article>
                   <h4>Authorization</h4>
-                  <p>Project-scoped membership and reviewers control who can change status, verification, and approvals.</p>
+                  <p>Project membership and reviewers control status and approvals.</p>
                 </article>
               </div>
-              <p>
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/tree/main/docs/user-manual" target="_blank" rel="noopener noreferrer">User manual</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Docs index</a>
+              <p class="doc-links">
+                <a href="https://github.com/MarreqSW/Marreq/tree/main/docs/user-manual" target="_blank" rel="noopener noreferrer">User manual</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Docs index</a>
               </p>
             </div>
 
             <div class="explore__panel" role="tabpanel" id="panel-api" aria-labelledby="tab-api" data-panel="api" hidden>
               <h3>HTTP API overview</h3>
               <p>
-                JSON routes mount under <code>/api</code>. Local API default:
-                <code>http://127.0.0.1:8000/api</code>.
-                Behind Docker nginx or Vite, call the SPA origin (e.g. <code>http://localhost:8080/api</code>).
+                JSON under <code>/api</code>. Local default: <code>http://127.0.0.1:8000/api</code>.
+                Behind Docker/Vite, use the SPA origin.
               </p>
               <div class="api-overview">
                 <div>
                   <h4>Auth</h4>
                   <ul>
-                    <li><code>POST /auth/login</code>, <code>GET /auth/me</code>, CSRF for mutating session calls</li>
+                    <li>Session login + CSRF for mutating calls</li>
                     <li>Bearer tokens for headless clients and MCP</li>
                   </ul>
                 </div>
@@ -643,9 +507,8 @@ cd frontend &amp;&amp; npm install &amp;&amp; npm run dev</code></pre>
                   <h4>Domain</h4>
                   <ul>
                     <li>Requirements, versions, approval, comments</li>
-                    <li>Verifications (tests), matrix, coverage</li>
-                    <li>Baselines and baseline-vs-current diffs</li>
-                    <li>Optional semantic search / RAG when enabled</li>
+                    <li>Verifications, matrix, coverage, baselines</li>
+                    <li>Optional semantic search when enabled</li>
                   </ul>
                 </div>
               </div>
@@ -653,75 +516,55 @@ cd frontend &amp;&amp; npm install &amp;&amp; npm run dev</code></pre>
                 <pre><code>curl -s http://127.0.0.1:8000/api/auth/me
 curl -s http://127.0.0.1:8000/api/projects</code></pre>
               </div>
-              <p>
-                Endpoint lists evolve with the product—prefer the repository README and OpenAPI fragment over copying a homepage catalog.
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/http-api-contract.md" target="_blank" rel="noopener noreferrer">HTTP API contract</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/openapi.yaml" target="_blank" rel="noopener noreferrer">OpenAPI (partial)</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/README.md#api-reference" target="_blank" rel="noopener noreferrer">README API section</a>
+              <p class="doc-links">
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/http-api-contract.md" target="_blank" rel="noopener noreferrer">HTTP contract</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/openapi.yaml" target="_blank" rel="noopener noreferrer">OpenAPI</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/README.md#api-reference" target="_blank" rel="noopener noreferrer">README API</a>
               </p>
             </div>
 
             <div class="explore__panel" role="tabpanel" id="panel-architecture" aria-labelledby="tab-architecture" data-panel="architecture" hidden>
               <h3>Technology &amp; layout</h3>
               <ul class="stack-list">
-                <li><strong>Backend:</strong> Rust, Rocket, Diesel, PostgreSQL (pgvector optional for embeddings)</li>
+                <li><strong>Backend:</strong> Rust, Rocket, Diesel, PostgreSQL (pgvector optional)</li>
                 <li><strong>Frontend:</strong> React 19, TypeScript, Vite, Tailwind CSS</li>
-                <li><strong>Deployments:</strong> <code>marreq-server</code> (self-hosted) and <code>marreq-cloud</code> (hosted-style)</li>
-                <li><strong>Integrations:</strong> ReqIF, Excel, optional MCP server (<code>mcp-server/</code>)</li>
-                <li><strong>Containers:</strong> Docker Compose for db, API, SPA, optional Ollama</li>
+                <li><strong>Deployments:</strong> <code>marreq-server</code> and <code>marreq-cloud</code></li>
+                <li><strong>Integrations:</strong> ReqIF, Excel, optional <code>mcp-server/</code></li>
               </ul>
-              <p>
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/workspace-layout.md" target="_blank" rel="noopener noreferrer">Workspace layout</a>
-                ·
-                <a class="text-link" href="https://github.com/MarreqSW/Marreq/blob/main/docs/architecture/database-schema.md" target="_blank" rel="noopener noreferrer">Database schema</a>
+              <p class="doc-links">
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/workspace-layout.md" target="_blank" rel="noopener noreferrer">Workspace layout</a>
+                <a href="https://github.com/MarreqSW/Marreq/blob/main/docs/architecture/database-schema.md" target="_blank" rel="noopener noreferrer">Database schema</a>
               </p>
             </div>
           </div>
         </div>
-
-        <!-- Accordion fallback content remains in DOM for no-JS / indexing via tabs panels always present -->
         <noscript>
-          <style>.explore__panel[hidden]{display:block!important}</style>
+          <style>.explore__panel[hidden]{display:block!important;margin-top:1.5rem}</style>
         </noscript>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section section--muted" id="contact">
-      <div class="section__inner">
-        <header class="section__header">
-          <p class="eyebrow">Contact</p>
-          <h2>Support or get in touch</h2>
-          <p class="section__lede">
-            Users, contributors, companies, and organizations interested in Marreq can reach the project maintainers through these addresses.
-          </p>
-        </header>
-
-        <div class="contact-grid">
-          <article class="contact-card">
-            <h3>Contact</h3>
-            <p>Questions, feedback, deployment discussions, integrations, and collaboration.</p>
-            <a class="btn btn--secondary" href="mailto:contact@marreq.com">contact@marreq.com</a>
-          </article>
-          <article class="contact-card">
-            <h3>Sponsor Marreq</h3>
-            <p>
-              Interested in supporting continued development, infrastructure, documentation, integrations, or other project work?
-              Reach out to discuss how you might help the open-source project.
-            </p>
-            <a class="btn btn--secondary" href="mailto:sponsorship@marreq.com">sponsorship@marreq.com</a>
-          </article>
+    <!-- 7. Contact + final CTA -->
+    <section class="band band--contact" id="contact">
+      <div class="shell contact-split">
+        <div>
+          <p class="side-label">Contact</p>
+          <h2>Get in touch</h2>
+          <p>Questions, feedback, deployment discussions, integrations, and collaboration.</p>
+          <a class="btn btn--secondary" href="mailto:contact@marreq.com">contact@marreq.com</a>
+        </div>
+        <div>
+          <p class="side-label">Sponsorship</p>
+          <h2>Support Marreq</h2>
+          <p>Interested in supporting development, infrastructure, documentation, or integrations? Reach out to discuss how you might help the open-source project.</p>
+          <a class="btn btn--secondary" href="mailto:sponsorship@marreq.com">sponsorship@marreq.com</a>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="final-cta" id="try">
-      <div class="final-cta__inner">
+      <div class="shell final-cta__inner">
         <h2>Start managing requirements with Marreq.</h2>
-        <p>Try the live application, or clone the repository and self-host.</p>
         <div class="hero__actions">
           <a class="btn btn--on-dark" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a>
           <a class="btn btn--ghost-on-dark" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View source</a>
@@ -731,7 +574,7 @@ curl -s http://127.0.0.1:8000/api/projects</code></pre>
   </main>
 
   <footer class="site-footer">
-    <div class="site-footer__inner">
+    <div class="shell site-footer__inner">
       <div class="site-footer__brand">
         <a class="brand" href="#top">
           <img src="logo.png" alt="" width="32" height="22" class="brand__logo">
@@ -743,8 +586,9 @@ curl -s http://127.0.0.1:8000/api/projects</code></pre>
         <div>
           <h3>Product</h3>
           <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#tour">Tour</a></li>
             <li><a href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a></li>
           </ul>
         </div>
@@ -773,19 +617,16 @@ curl -s http://127.0.0.1:8000/api/projects</code></pre>
         </div>
       </nav>
     </div>
-    <div class="site-footer__bottom">
+    <div class="shell site-footer__bottom">
       <p>© 2026 Marreq</p>
       <p>Licensed under AGPL-3.0</p>
     </div>
   </footer>
 
-  <!-- Lightbox -->
   <div id="screenshotModal" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden>
     <div class="lightbox__overlay" data-lightbox-close></div>
     <div class="lightbox__dialog">
-      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close screenshot viewer">
-        <span aria-hidden="true">×</span>
-      </button>
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close screenshot viewer"><span aria-hidden="true">×</span></button>
       <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous screenshot">‹</button>
       <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next screenshot">›</button>
       <div class="lightbox__image-wrap">
