@@ -1,66 +1,97 @@
-// Screenshot Lightbox functionality
-(function() {
-    'use strict';
+/**
+ * Accessible screenshot lightbox with prev/next and focus management.
+ */
+(function () {
+  "use strict";
 
-    const modal = document.getElementById('screenshotModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCaption = document.getElementById('modal-caption');
-    const modalClose = document.querySelector('.screenshot-modal__close');
-    const modalOverlay = document.querySelector('.screenshot-modal__overlay');
-    const screenshotContainers = document.querySelectorAll('.screenshot-container');
+  const modal = document.getElementById("screenshotModal");
+  if (!modal) return;
 
-    // Open modal with image
-    function openModal(imageSrc, caption) {
-        modalImage.src = imageSrc;
-        modalImage.alt = caption;
-        modalCaption.textContent = caption;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  const modalImage = document.getElementById("modalImage");
+  const modalCaption = document.getElementById("lightbox-caption");
+  const items = Array.from(document.querySelectorAll("[data-screenshot]"));
+  const closeControls = modal.querySelectorAll("[data-lightbox-close]");
+  const prevBtn = modal.querySelector("[data-lightbox-prev]");
+  const nextBtn = modal.querySelector("[data-lightbox-next]");
+
+  let index = 0;
+  let lastFocus = null;
+
+  function getItemData(item) {
+    return {
+      src: item.getAttribute("data-screenshot"),
+      caption: item.getAttribute("data-caption") || "",
+      alt: item.querySelector("img")?.getAttribute("alt") || item.getAttribute("data-caption") || "Screenshot",
+    };
+  }
+
+  function render() {
+    const data = getItemData(items[index]);
+    modalImage.src = data.src;
+    modalImage.alt = data.alt;
+    modalCaption.textContent = data.caption;
+  }
+
+  function open(startIndex) {
+    index = startIndex;
+    lastFocus = document.activeElement;
+    render();
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    (modal.querySelector(".lightbox__close") || modal).focus();
+  }
+
+  function close() {
+    modal.hidden = true;
+    modalImage.removeAttribute("src");
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") {
+      lastFocus.focus();
     }
+  }
 
-    // Close modal
-    function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = ''; // Restore scrolling
+  function keepFocusInside(event) {
+    if (event.key !== "Tab" || modal.hidden) return;
+    const controls = Array.from(modal.querySelectorAll("button:not([disabled])"));
+    if (!controls.length) return;
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
+  }
 
-    // Add click handlers to all screenshot containers
-    screenshotContainers.forEach(container => {
-        container.addEventListener('click', function(e) {
-            e.preventDefault();
-            const imageSrc = this.getAttribute('data-screenshot');
-            const caption = this.getAttribute('data-caption') || '';
-            if (imageSrc) {
-                openModal(imageSrc, caption);
-            }
-        });
+  function showNext(delta) {
+    index = (index + delta + items.length) % items.length;
+    render();
+  }
+
+  items.forEach((item, itemIndex) => {
+    item.addEventListener("click", () => open(itemIndex));
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open(itemIndex);
+      }
     });
+  });
 
-    // Close modal when clicking close button
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
+  closeControls.forEach((el) => {
+    el.addEventListener("click", close);
+  });
 
-    // Close modal when clicking overlay
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    }
+  if (prevBtn) prevBtn.addEventListener("click", () => showNext(-1));
+  if (nextBtn) nextBtn.addEventListener("click", () => showNext(1));
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-            closeModal();
-        }
-    });
-
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal || e.target === modalOverlay) {
-            closeModal();
-        }
-    });
+  document.addEventListener("keydown", (event) => {
+    if (modal.hidden) return;
+    keepFocusInside(event);
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") showNext(-1);
+    if (event.key === "ArrowRight") showNext(1);
+  });
 })();

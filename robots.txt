@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marreq.com/sitemap.xml

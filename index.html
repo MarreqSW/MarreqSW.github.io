@@ -1,569 +1,105 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MarReq - Requirements Management System</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="theme-prefetch.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marreq — Open-source requirements &amp; verification management</title>
+  <meta name="description" content="Marreq is an open-source requirements and verification management platform with hierarchical requirements, traceability, immutable baselines, ReqIF, REST APIs, and optional MCP integration.">
+  <link rel="canonical" href="https://marreq.com/">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#080d18" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Marreq">
+  <meta property="og:title" content="Marreq — Requirements engineering without losing traceability">
+  <meta property="og:description" content="Open-source requirements and verification management: hierarchy, approvals, baselines, ReqIF, REST APIs, and MCP for AI assistants.">
+  <meta property="og:url" content="https://marreq.com/"><meta property="og:image" content="https://marreq.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Marreq — Requirements engineering without losing traceability"><meta name="twitter:description" content="Open-source requirements and verification management with traceability, baselines, ReqIF, and APIs."><meta name="twitter:image" content="https://marreq.com/og-image.png">
+  <link rel="icon" type="image/png" href="logo.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="theme-prefetch.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="preload" as="image" href="screenshots/hero-dashboard.webp" type="image/webp">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Marreq","applicationCategory":"DeveloperApplication","operatingSystem":"Linux, macOS, Windows","url":"https://marreq.com/","downloadUrl":"https://github.com/MarreqSW/Marreq","softwareVersion":"0.1.0","license":"https://github.com/MarreqSW/Marreq/blob/main/LICENSE","description":"Open-source requirements and verification management platform with hierarchical requirements, traceability matrices, immutable baselines, ReqIF import/export, REST APIs, and optional MCP integration.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"codeRepository":"https://github.com/MarreqSW/Marreq","programmingLanguage":["Rust","TypeScript"],"isAccessibleForFree":true}</script>
 </head>
-
 <body>
-    <main class="o-main-content">
-        <!-- Header -->
-        <header class="page-header">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="logo.png" alt="MarReq Logo" class="header-logo">
-                </div>
-                <h1>Requirement Manager (MarReq)</h1>
-                <p class="subtitle">A comprehensive web-based requirements and test management system</p>
-                <a class="header-cta" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Give it a try</a>
-            </div>
-            <div class="header-actions">
-                <a class="header-github" href="https://github.com/MarreqSW/Marreq" target="_blank"
-                    rel="noopener noreferrer" aria-label="MarReq on GitHub" title="MarReq on GitHub">
-                    <svg class="header-github__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                    </svg>
-                </a>
-                <button data-theme-toggle class="theme-toggle c-theme-toggle" type="button" aria-label="Toggle dark mode"
-                    aria-pressed="false" title="Toggle dark mode">
-                    <span class="theme-toggle-icon theme-toggle-icon-sun c-theme-toggle__icon c-theme-toggle__icon--sun"
-                        aria-hidden="true">☀</span>
-                    <span class="theme-toggle-icon theme-toggle-icon-moon c-theme-toggle__icon c-theme-toggle__icon--moon"
-                        aria-hidden="true">🌙</span>
-                </button>
-            </div>
-        </header>
-
-        <!-- Introduction Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>About MarReq</h2>
-                </div>
-                <div class="c-card__body">
-                    <p class="c-card__text">
-                        MarReq is a comprehensive web-based requirements and test management system built with Rust,
-                        Rocket, and PostgreSQL.
-                        This software provides a complete solution for managing hierarchical requirements, tests,
-                        traceability matrices, and generating reports.
-                    </p>
-                    <p class="c-card__text">
-                        Whether you're managing software requirements, system specifications, or test cases, MarReq
-                        offers a modern,
-                        intuitive interface with powerful features for organizing, tracking, and reporting on your
-                        project's requirements and tests.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>✨ Features</h2>
-                </div>
-                <div class="c-card__body">
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <h3>📋 Core Management</h3>
-                            <ul>
-                                <li><strong>Multi-Project Support:</strong> Manage multiple projects with isolated data
-                                </li>
-                                <li><strong>Requirements Management:</strong> Create, edit, and organize hierarchical
-                                    requirements</li>
-                                <li><strong>Test Management:</strong> Manage tests with status tracking and source
-                                    documentation</li>
-                                <li><strong>Traceability Matrix:</strong> Visual mapping between requirements and tests
-                                </li>
-                                <li><strong>User Management:</strong> Assign authors and reviewers to requirements with
-                                    authentication</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>🏷️ Advanced Features</h3>
-                            <ul>
-                                <li><strong>Categories:</strong> User-defined categories for organizing requirements
-                                    (project-specific)</li>
-                                <li><strong>Applicability:</strong> Define product lines, system types, or project
-                                    scopes (project-specific)</li>
-                                <li><strong>Status Tracking:</strong> Track requirement status (Draft, Accepted,
-                                    Rejected, etc.)</li>
-                                <li><strong>Verification Methods:</strong> Specify verification types (Test, Analysis,
-                                    Review, etc.)</li>
-                                <li><strong>Authentication:</strong> Secure login system with password management</li>
-                                <li><strong>Project Isolation:</strong> Data separation between different projects</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>📊 Reporting & Export</h3>
-                            <ul>
-                                <li><strong>Excel Export:</strong> Export requirements with all fields to Excel format
-                                </li>
-                                <li><strong>Matrix Export:</strong> Export traceability matrix to Excel</li>
-                                <li><strong>ReqIF 1.2:</strong> Import and export requirements as ReqIF XML; export current project or an immutable baseline</li>
-                                <li><strong>Comprehensive Data:</strong> All metadata included in exports (categories,
-                                    applicability, dates, etc.)</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>📸 Immutable Baselines</h3>
-                            <ul>
-                                <li><strong>Project Baselines:</strong> Create point-in-time snapshots of all requirement versions and traceability</li>
-                                <li><strong>Immutable:</strong> Baselines and their contents cannot be updated or deleted (enforced at DB and API level)</li>
-                                <li><strong>Version Snapshot:</strong> Each baseline stores which requirement version was current per requirement, plus the traceability matrix at creation time</li>
-                                <li><strong>Export from Baseline:</strong> ReqIF and UI support exporting a specific baseline for audits or releases</li>
-                                <li><strong>API & UI:</strong> Create, list, and view baselines via REST API and web UI (project Baselines section)</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>✅ Requirement Approval Workflow</h3>
-                            <ul>
-                                <li><strong>Detail page:</strong> Approval badge (draft / reviewed / approved), metadata (approved by, date), and actions: <em>Mark as Reviewed</em> and <em>Approve Requirement</em> (for project owners/managers) with confirmation modals</li>
-                                <li><strong>Edit when approved:</strong> Editing an approved requirement creates a new Draft version; user is warned and can cancel or proceed</li>
-                                <li><strong>Version history:</strong> Each version shows its approval state; list and detail show approval consistently</li>
-                                <li><strong>List view:</strong> Approval column and filters (<em>Approved only</em> / <em>Not approved</em>). Transitions are explicit and audit-friendly</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>🎨 Modern UI</h3>
-                            <ul>
-                                <li><strong>Responsive Design:</strong> Works on desktop and mobile devices</li>
-                                <li><strong>Modern Interface:</strong> Clean, card-based layout with consistent styling
-                                </li>
-                                <li><strong>Intuitive Navigation:</strong> Easy-to-use interface with clear visual
-                                    hierarchy</li>
-                                <li><strong>Professional Styling:</strong> Consistent color scheme and typography</li>
-                                <li><strong>Dark Mode:</strong> Full dark mode support with theme persistence</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h3>🔌 API Access</h3>
-                            <ul>
-                                <li><strong>RESTful API:</strong> Complete programmatic access to all data</li>
-                                <li><strong>JSON Format:</strong> Standard JSON responses for integration</li>
-                                <li><strong>CRUD Operations:</strong> Full Create, Read, Update, Delete support</li>
-                                <li><strong>Project-Scoped:</strong> All API operations respect project boundaries</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Screenshots Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>📸 Screenshots</h2>
-                </div>
-                <div class="c-card__body">
-                    <p class="c-card__text">
-                        Get a glimpse of MarReq's modern interface and powerful features:
-                    </p>
-                    <div class="screenshots-gallery">
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/dashboard.png" data-caption="Dashboard - Overview of projects and requirements">
-                                <img src="screenshots/dashboard.png" alt="MarReq Dashboard" class="screenshot-image"
-                                    loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Dashboard - Overview of projects and requirements</p>
-                                </div>
-                            </div>
-                            <h4>Dashboard</h4>
-                            <p class="screenshot-description">Main dashboard showing project overview and quick access
-                                to key features</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/requirements.png" data-caption="Requirements Management - Hierarchical view">
-                                <img src="screenshots/requirements.png" alt="Requirements Management"
-                                    class="screenshot-image" loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Requirements Management - Hierarchical view</p>
-                                </div>
-                            </div>
-                            <h4>Requirements Management</h4>
-                            <p class="screenshot-description">Create, edit, and organize hierarchical requirements with
-                                full metadata</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/matrix.png" data-caption="Traceability Matrix - Requirements to Tests mapping">
-                                <img src="screenshots/matrix.png" alt="Traceability Matrix" class="screenshot-image"
-                                    loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Traceability Matrix - Requirements to Tests mapping
-                                    </p>
-                                </div>
-                            </div>
-                            <h4>Traceability Matrix</h4>
-                            <p class="screenshot-description">Visual mapping between requirements and tests with status
-                                indicators</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/requirement-detail.png" data-caption="Requirement Detail - Full requirement information">
-                                <img src="screenshots/requirement-detail.png" alt="Requirement Detail View"
-                                    class="screenshot-image" loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Requirement Detail - Full requirement information</p>
-                                </div>
-                            </div>
-                            <h4>Requirement Detail</h4>
-                            <p class="screenshot-description">Detailed view of individual requirements with all metadata
-                                and relationships</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/tests.png" data-caption="Test Management - Organize and track test cases">
-                                <img src="screenshots/tests.png" alt="Test Management" class="screenshot-image"
-                                    loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Test Management - Organize and track test cases</p>
-                                </div>
-                            </div>
-                            <h4>Test Management</h4>
-                            <p class="screenshot-description">Manage test cases with status tracking and source
-                                documentation</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="screenshot-container" data-screenshot="screenshots/categories.png" data-caption="Categories - Organize requirements by category">
-                                <img src="screenshots/categories.png" alt="Categories Management"
-                                    class="screenshot-image" loading="lazy">
-                                <div class="screenshot-overlay">
-                                    <p class="screenshot-caption">Categories - Organize requirements by category</p>
-                                </div>
-                            </div>
-                            <h4>Categories & Applicability</h4>
-                            <p class="screenshot-description">Define custom categories and applicability options for
-                                your project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Start Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>🚀 Quick Start</h2>
-                </div>
-                <div class="c-card__body">
-                    <h3>Prerequisites</h3>
-                    <ul>
-                        <li><strong>PostgreSQL:</strong> Database backend (provided via Docker)</li>
-                        <li><strong>Docker & Docker Compose:</strong> For database containerization</li>
-                        <li><strong>Rust:</strong> Programming language</li>
-                        <li><strong>clang / libclang-dev:</strong> Required by <code>xlsxwriter</code></li>
-                    </ul>
-
-                    <h3>Installation</h3>
-                    <p class="c-card__text">For a fully initialized database with pre-configured users and sample data:
-                    </p>
-                    <ol>
-                        <li>Start database: <code>docker compose up -d db</code></li>
-                        <li>Initialize DB with sample data: <code>./scripts/setup_database.sh</code></li>
-                        <li>Start app: <code>cargo run --bin mar_req</code></li>
-                    </ol>
-                    <p class="c-card__text">Then open <strong>http://localhost:8000</strong> in your browser (all demo
-                        users use password <code>password</code>).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- User Manual Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>📖 User Manual</h2>
-                </div>
-                <div class="c-card__body">
-                    <h3>Web Interface</h3>
-                    <div class="manual-section">
-                        <h4>Requirements</h4>
-                        <p class="c-card__text">
-                            Navigate to project requirements to view and manage requirements (with version history). You can:
-                        </p>
-                        <ul>
-                            <li>Create new requirements with hierarchical structure</li>
-                            <li>Edit existing requirements inline or via detail page</li>
-                            <li>Filter and search requirements (including <em>Approved only</em> / <em>Not approved</em>)</li>
-                            <li>Assign categories, applicability, authors, and reviewers</li>
-                            <li>Track requirement status and approval (Draft → Reviewed → Approved)</li>
-                            <li>View requirement hierarchy and version history</li>
-                            <li>On the detail page: use <em>Mark as Reviewed</em> and <em>Approve Requirement</em> (project owners/managers)</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Tests</h4>
-                        <p class="c-card__text">
-                            Go to project tests to manage test cases. Features include:
-                        </p>
-                        <ul>
-                            <li>Create and organize test cases (hierarchical)</li>
-                            <li>Link tests to requirements via traceability matrix</li>
-                            <li>Track test status and results</li>
-                            <li>Document test sources and verification methods</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Traceability Matrix</h4>
-                        <p class="c-card__text">
-                            Visit project matrix to view the traceability matrix. This provides:
-                        </p>
-                        <ul>
-                            <li>Visual mapping between requirements and tests</li>
-                            <li>Status and suspect-link indicators for each requirement–test link</li>
-                            <li>Filtering and search capabilities</li>
-                            <li>Export to Excel</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Baselines</h4>
-                        <p class="c-card__text">
-                            From the project dashboard or nav, open <strong>Baselines</strong> to:
-                        </p>
-                        <ul>
-                            <li>Create immutable point-in-time snapshots (current requirement versions + traceability)</li>
-                            <li>View baseline contents and metadata</li>
-                            <li>Export a specific baseline as ReqIF for audits or releases</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Categories & Applicability</h4>
-                        <p class="c-card__text">
-                            Manage project-specific metadata:
-                        </p>
-                        <ul>
-                            <li><strong>Categories:</strong> Access project categories to create and manage
-                                requirement categories</li>
-                            <li><strong>Applicability:</strong> Visit project applicability to define product
-                                lines, system types, or project scopes</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Export Features</h4>
-                        <ul>
-                            <li><strong>Requirements Export:</strong> Click "Export Excel" on the requirements page or homepage</li>
-                            <li><strong>Matrix Export:</strong> Click "Export Excel" on the matrix page</li>
-                            <li><strong>ReqIF Export:</strong> Use "Export → ReqIF (current)" for the live project, or "ReqIF (from baseline…)" to pick a baseline and download its snapshot as ReqIF 1.2 XML</li>
-                            <li><strong>File Format:</strong> Excel as <code>.xls</code>; ReqIF as XML</li>
-                        </ul>
-                    </div>
-
-                    <div class="manual-section">
-                        <h4>Import Features</h4>
-                        <ul>
-                            <li><strong>Excel Parser:</strong> Standalone application to parse exported Excel files and import data via API</li>
-                            <li><strong>ReqIF 1.2 Import:</strong> Import requirements from ReqIF XML into a project (project ReqIF/Import page)</li>
-                            <li><strong>Data Import:</strong> Import requirements, tests, and traceability data from Excel or ReqIF</li>
-                            <li><strong>API Integration:</strong> Seamless integration with the main application's REST API</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- API Reference Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>🔌 API Reference</h2>
-                </div>
-                <div class="c-card__body">
-                    <h3>Base URL</h3>
-                    <pre><code>http://localhost:8000/api</code></pre>
-                    <p class="c-card__text">All API routes are mounted at <code>/api</code>. All operations are project-scoped where applicable.</p>
-
-                    <h3>Endpoints</h3>
-                    <div class="api-endpoints">
-                        <div class="endpoint-group">
-                            <h4>Requirements</h4>
-                            <ul>
-                                <li><code>GET /requirements</code> - List all requirements</li>
-                                <li><code>GET /requirements/{id}</code> - Get specific requirement</li>
-                                <li><code>GET /requirements/{id}/versions</code> - List versions (newest first)</li>
-                                <li><code>GET /requirements/{req_id}/versions/{version_id}</code> - Get specific version</li>
-                                <li><code>PUT /requirements/{req_id}/versions/{version_id}/approval</code> - Set approval state (body: <code>state</code>: "reviewed" | "approved"; project owners/managers)</li>
-                                <li><code>POST /requirements</code> - Create new requirement</li>
-                                <li><code>PATCH /requirements/{id}</code> - Partially update supported fields</li>
-                                <li><code>DELETE /requirements/{id}</code> - Delete requirement</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Tests</h4>
-                            <ul>
-                                <li><code>GET /tests</code> - List all tests</li>
-                                <li><code>GET /tests/{id}</code> - Get specific test</li>
-                                <li><code>POST /tests</code> - Create new test</li>
-                                <li><code>POST /tests/{id}/field</code> - Partially update a test field (body: <code>field</code>, <code>value</code>)</li>
-                                <li><code>DELETE /tests/{id}</code> - Delete test</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Categories</h4>
-                            <ul>
-                                <li><code>GET /categories</code> - List all categories</li>
-                                <li><code>GET /categories/{id}</code> - Get specific category</li>
-                                <li><code>POST /categories</code> - Create new category</li>
-                                <li><code>PUT /categories/{id}</code> - Update category</li>
-                                <li><code>DELETE /categories/{id}</code> - Delete category</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Applicability</h4>
-                            <ul>
-                                <li><code>GET /applicability</code> - List all applicability options</li>
-                                <li><code>GET /applicability/{id}</code> - Get specific applicability</li>
-                                <li><code>POST /applicability</code> - Create new applicability</li>
-                                <li><code>PUT /applicability/{id}</code> - Update applicability</li>
-                                <li><code>DELETE /applicability/{id}</code> - Delete applicability</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Matrix</h4>
-                            <ul>
-                                <li><code>GET /matrix</code> - Get traceability matrix data</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Baselines (immutable snapshots)</h4>
-                            <ul>
-                                <li><code>GET /projects/{project_id}/baselines</code> - List baselines</li>
-                                <li><code>GET /projects/{project_id}/baselines/{baseline_id}</code> - Get baseline metadata</li>
-                                <li><code>POST /projects/{project_id}/baselines</code> - Create baseline (body: <code>name</code>, <code>description</code>)</li>
-                                <li><code>GET /projects/{project_id}/baselines/{baseline_id}/requirements</code> - Get requirements in baseline</li>
-                                <li><code>GET /projects/{project_id}/baselines/{baseline_id}/traceability</code> - Get traceability snapshot</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Users</h4>
-                            <ul>
-                                <li><code>GET /users</code> - List all users</li>
-                                <li><code>GET /users/{id}</code> - Get specific user</li>
-                                <li><code>POST /users</code> - Create new user</li>
-                                <li><code>DELETE /users/{id}</code> - Delete user</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Status</h4>
-                            <ul>
-                                <li><code>GET /status</code> - List all status options</li>
-                                <li><code>GET /status/{id}</code> - Get specific status</li>
-                                <li><code>POST /status</code> - Create new status</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Traceability</h4>
-                            <ul>
-                                <li><code>POST /traceability/clear_suspect</code> - Clear suspect flag for a link (body: <code>req_id</code>, <code>test_id</code>)</li>
-                            </ul>
-                        </div>
-                        <div class="endpoint-group">
-                            <h4>Semantic search (project-scoped; when enabled)</h4>
-                            <ul>
-                                <li><code>GET /projects/{project_id}/requirements/semantic_search</code> - Search by semantic similarity</li>
-                                <li><code>POST /projects/{project_id}/requirements/ask</code> - RAG answer over requirements</li>
-                                <li><code>POST /projects/{project_id}/requirements/reindex</code> - Reindex (admin)</li>
-                                <li><code>GET /projects/{project_id}/requirements/index_status</code> - Indexing status</li>
-                                <li><code>GET /projects/{project_id}/requirements/semantic_search/status</code> - Check if enabled</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h3>Example API Usage</h3>
-                    <pre><code># Get all requirements
-curl http://localhost:8000/api/requirements
-
-# Create a new category
-curl -X POST http://localhost:8000/api/categories \
-  -H "Content-Type: application/json" \
-  -d '{"title": "API", "description": "API requirements", "tag": "API"}'
-
-# Export requirements to Excel
-curl -O http://localhost:8000/requirements.xls</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technology Stack Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>🛠️ Technology Stack</h2>
-                </div>
-                <div class="c-card__body">
-                    <ul>
-                        <li><strong>Backend:</strong> Rust with Rocket web framework</li>
-                        <li><strong>Database:</strong> PostgreSQL with Diesel ORM</li>
-                        <li><strong>Frontend:</strong> Handlebars templates with custom CSS</li>
-                        <li><strong>Reports:</strong> Excel generation with xlsxwriter</li>
-                        <li><strong>Containerization:</strong> Docker for database</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Links Section -->
-        <section class="content-section">
-            <div class="c-card">
-                <div class="c-card__header">
-                    <h2>🔗 Resources</h2>
-                </div>
-                <div class="c-card__body">
-                    <ul>
-                        <li><a href="https://github.com/marreq/MarReq" target="_blank"
-                                rel="noopener noreferrer">GitHub Repository</a></li>
-                        <li><a href="https://github.com/marreq/MarReq/blob/main/README.md" target="_blank"
-                                rel="noopener noreferrer">Full Documentation</a></li>
-                        <li><a href="https://github.com/marreq/MarReq/blob/main/DATABASE_SETUP_README.md"
-                                target="_blank" rel="noopener noreferrer">Database Setup Guide</a></li>
-                        <li><a href="https://github.com/marreq/MarReq/blob/main/LICENSE" target="_blank"
-                                rel="noopener noreferrer">License</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="page-footer">
-            <p>&copy; 2025 MarReq - Requirements Management System</p>
-            <p class="footer-text">This project is open source. See LICENSE file for details.</p>
-        </footer>
-    </main>
-
-    <!-- Screenshot Lightbox Modal -->
-    <div id="screenshotModal" class="screenshot-modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" style="display: none;">
-        <div class="screenshot-modal__overlay"></div>
-        <div class="screenshot-modal__content">
-            <button class="screenshot-modal__close" aria-label="Close modal" title="Close (Esc)">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="screenshot-modal__image-container">
-                <img id="modalImage" class="screenshot-modal__image" src="" alt="">
-            </div>
-            <p id="modal-caption" class="screenshot-modal__caption"></p>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="Marreq home"><img src="logo.png" alt="" width="36" height="25"><span>Marreq</span></a>
+      <nav class="nav" aria-label="Primary"><ul><li><a href="#requirements">Product</a></li><li><a href="#traceability">Traceability</a></li><li><a href="#baselines">Baselines</a></li><li><a href="#platform">Platform</a></li><li><a href="#developers">Developers</a></li><li><a href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">GitHub</a></li></ul></nav>
+      <div class="site-header__actions">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode"><svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"></path></svg></button>
+        <a class="btn btn--primary btn--small header-cta" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
+    <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden><nav aria-label="Mobile"><ul><li><a href="#requirements">Product</a></li><li><a href="#traceability">Traceability</a></li><li><a href="#baselines">Baselines</a></li><li><a href="#platform">Platform</a></li><li><a href="#developers">Developers</a></li><li><a href="#contact">Contact</a></li><li><a href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a class="btn btn--primary" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a></li></ul></nav></div>
+  </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="theme.js"></script>
-    <script src="screenshot-lightbox.js"></script>
+  <aside class="stage-rail" aria-label="Page sections" data-stage-rail>
+    <a href="#top" data-stage-link="top"><span>01</span><b>Introduction</b></a><a href="#requirements" data-stage-link="requirements"><span>02</span><b>Requirements</b></a><a href="#traceability" data-stage-link="traceability"><span>03</span><b>Traceability</b></a><a href="#baselines" data-stage-link="baselines"><span>04</span><b>Baselines</b></a><a href="#tour" data-stage-link="tour"><span>05</span><b>Product</b></a><a href="#platform" data-stage-link="platform"><span>06</span><b>Platform</b></a><a href="#developers" data-stage-link="developers"><span>07</span><b>Developers</b></a><a href="#contact" data-stage-link="contact"><span>08</span><b>Project</b></a>
+  </aside>
+
+  <main id="main">
+    <section class="stage hero" id="top" data-stage="top">
+      <div class="page-shell hero__layout">
+        <div class="hero__copy" data-reveal><p class="stage-kicker"><span>01</span> Open source requirements engineering</p><h1>Requirements engineering, without losing traceability.</h1><p class="hero__lede">Structure requirements, connect verification, approve revisions, and freeze trustworthy baselines in one open platform.</p><div class="action-row"><a class="btn btn--primary" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq <span aria-hidden="true">→</span></a><a class="btn btn--secondary" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View on GitHub</a></div><ul class="hero__facts" aria-label="Key attributes"><li>Open source</li><li>Self-hosted</li><li>ReqIF</li><li>REST API</li></ul></div>
+        <figure class="product-frame hero__visual" data-reveal="media"><div class="product-frame__bar" aria-hidden="true"><i></i><i></i><i></i><span>app.marreq.com</span></div><img src="screenshots/hero-dashboard.webp" srcset="screenshots/hero-dashboard.webp 1280w, screenshots/dashboard.png 1920w" sizes="(max-width: 900px) 100vw, 58vw" width="1280" height="720" alt="Marreq project overview showing requirement counts, verification coverage, and traceability health" fetchpriority="high" decoding="async"></figure>
+      </div><a class="continue" href="#requirements"><span>Continue</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <section class="stage requirements" id="requirements" data-stage="requirements">
+      <div class="content-shell split-stage">
+        <div class="stage-copy" data-reveal><p class="stage-kicker"><span>02</span> Requirements</p><h2>Every requirement has a history.</h2><p>Organize requirements hierarchically, review changes in context, and preserve the versions behind every approval. Comments and project roles keep decisions attached to the engineering record.</p><ul class="detail-line" aria-label="Requirement capabilities"><li>Hierarchy</li><li>Version history</li><li>Review</li><li>Approval</li></ul></div>
+        <div class="requirement-object" data-reveal="media"><div class="requirement-object__head"><span>REQ-042</span><span class="status status--approved">Approved</span></div><p class="requirement-object__path">Power system / Energy storage</p><h3>Battery capacity requirement</h3><p>The battery system shall provide sufficient usable capacity to support nominal operation through the defined mission cycle.</p><dl><div><dt>Current version</dt><dd>Version 7</dd></div><div><dt>Verification</dt><dd>3 linked</dd></div><div><dt>Last reviewed</dt><dd>Engineering review</dd></div></dl><div class="requirement-object__history" aria-label="Version history"><span>v5</span><i></i><span>v6</span><i></i><span class="is-current">v7</span></div><p class="concept-note">Conceptual product representation — not live project data.</p></div>
+      </div>
+    </section>
+
+    <section class="stage traceability" id="traceability" data-stage="traceability">
+      <div class="page-shell traceability__layout">
+        <header class="scene-head" data-reveal><p class="stage-kicker stage-kicker--dark"><span>03</span> Traceability</p><h2>Coverage you can inspect.</h2><p>Connect requirements to verification and see gaps, coverage, and suspect links as the design changes.</p></header>
+        <figure class="product-frame product-frame--dark traceability__frame" data-reveal="media"><div class="product-frame__bar" aria-hidden="true"><i></i><i></i><i></i><span>Traceability matrix</span></div><img src="screenshots/matrix.png" alt="Marreq traceability matrix showing requirement and verification coverage" width="1920" height="1080" loading="lazy" decoding="async"></figure>
+        <div class="trace-legend" data-reveal><div><code>REQ-042</code><i></i><code>VER-014</code><span class="status status--covered">covered</span></div><div><code>REQ-043</code><i class="is-suspect"></i><code>VER-019</code><span class="status status--suspect">suspect</span></div></div>
+      </div>
+    </section>
+
+    <section class="stage baselines" id="baselines" data-stage="baselines">
+      <div class="content-shell split-stage split-stage--reverse">
+        <div class="baseline-stack" aria-label="Illustrative immutable baseline layers" data-reveal="media"><div class="baseline-layer baseline-layer--back"><span>Current</span><strong>50 requirements</strong></div><div class="baseline-layer baseline-layer--middle"><span>Baseline 2026.08</span><strong>47 requirements</strong></div><div class="baseline-layer baseline-layer--front"><div><span>BASELINE / 2026.09</span><span class="lock" aria-label="Immutable">Locked</span></div><h3>Release candidate</h3><dl><div><dt>Requirements</dt><dd>48</dd></div><div><dt>Verifications</dt><dd>32</dd></div><div><dt>Trace links</dt><dd>84</dd></div></dl><p>Requirement versions and traceability state captured together.</p></div><p class="concept-note baseline-note">Conceptual product representation — not live project data.</p></div>
+        <div class="stage-copy" data-reveal><p class="stage-kicker"><span>04</span> Baselines</p><h2>Freeze a trustworthy project state.</h2><p>An immutable baseline records the exact requirement versions and traceability state at a point in time. Compare it with current work or export the captured state as ReqIF.</p><ul class="detail-list"><li>Immutable snapshot</li><li>Compare against current</li><li>ReqIF export</li></ul></div>
+      </div>
+    </section>
+
+    <section class="stage tour-stage" id="tour" data-stage="tour">
+      <div class="page-shell"><header class="scene-head scene-head--row" data-reveal><div><p class="stage-kicker"><span>05</span> Product experience</p><h2>Inside Marreq.</h2></div><p>Real application views for managing the engineering record. Open any screen for a closer look.</p></header><div class="tour" data-gallery data-reveal="media"><button type="button" class="tour__feature" data-screenshot="screenshots/requirements.png" data-caption="Requirements — hierarchical list with status and approval"><img src="screenshots/requirements.png" alt="Marreq hierarchical requirements list" width="1920" height="1080" loading="lazy" decoding="async"><span>Requirements <b>Hierarchy, status, approval</b></span></button><button type="button" class="tour__tile" data-screenshot="screenshots/tests.png" data-caption="Verification — manage and track test cases"><img src="screenshots/tests.png" alt="Marreq verification management" width="1920" height="1080" loading="lazy" decoding="async"><span>Verification</span></button><button type="button" class="tour__tile" data-screenshot="screenshots/categories.png" data-caption="Categories and applicability — project-scoped organization"><img src="screenshots/categories.png" alt="Marreq categories management" width="1920" height="1080" loading="lazy" decoding="async"><span>Categories</span></button></div></div>
+    </section>
+
+    <section class="stage platform-stage" id="platform" data-stage="platform">
+      <div class="content-shell"><header class="scene-head" data-reveal><p class="stage-kicker"><span>06</span> Open platform</p><h2>Open to run.<br>Built to connect.</h2></header><div class="platform-split"><article data-reveal><p class="platform-split__label">Open</p><p>Marreq is AGPL-3.0 licensed and self-hostable. Inspect the code, operate it on your infrastructure, and contribute improvements.</p><ul class="platform-terms"><li>AGPL-3.0</li><li>Self-hosted</li><li>Rust</li><li>PostgreSQL</li><li>React</li></ul><a class="text-link" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">→</span></a></article><article data-reveal="media"><p class="platform-split__label">Connected</p><dl class="integration-list"><div><dt>REST API</dt><dd>JSON endpoints for product and headless clients</dd></div><div><dt>ReqIF 1.2</dt><dd>Exchange live projects and captured baselines</dd></div><div><dt>Excel / CSV</dt><dd>Mapped imports and spreadsheet exports</dd></div><div><dt>MCP</dt><dd>Optional controlled tools for AI assistants</dd></div></dl></article></div></div>
+    </section>
+
+    <section class="developer-stage" id="developers" data-stage="developers">
+      <div class="content-shell"><header class="scene-head" data-reveal><p class="stage-kicker"><span>07</span> Developers</p><h2>Start local. Go deeper.</h2><p>Run Marreq, integrate the API, or inspect the architecture. The complete documentation remains in the repository.</p></header><div class="explore" data-tabs data-reveal="media">
+        <div class="explore__tabs" role="tablist" aria-label="Developer topics"><button type="button" role="tab" id="tab-quickstart" aria-controls="panel-quickstart" aria-selected="true" data-tab="quickstart">Quick Start</button><button type="button" role="tab" id="tab-guide" aria-controls="panel-guide" aria-selected="false" data-tab="guide" tabindex="-1">User Guide</button><button type="button" role="tab" id="tab-api" aria-controls="panel-api" aria-selected="false" data-tab="api" tabindex="-1">API</button><button type="button" role="tab" id="tab-architecture" aria-controls="panel-architecture" aria-selected="false" data-tab="architecture" tabindex="-1">Architecture</button></div>
+        <div class="explore__panels">
+          <div class="explore__panel" role="tabpanel" id="panel-quickstart" aria-labelledby="tab-quickstart" data-panel="quickstart"><div class="developer-copy"><h3>Run locally</h3><p>Docker Compose starts PostgreSQL; Rust runs the API; Node.js 20 serves the SPA.</p><p class="doc-links"><a href="https://github.com/MarreqSW/Marreq/blob/main/INSTALL.md" target="_blank" rel="noopener noreferrer">Installation</a><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/setup.md" target="_blank" rel="noopener noreferrer">Setup guide</a><a href="https://github.com/MarreqSW/Marreq/blob/main/docker/README.md" target="_blank" rel="noopener noreferrer">Docker</a></p></div><div class="terminal" tabindex="0"><div class="terminal__bar" aria-hidden="true"><i></i><i></i><i></i><span>quick start</span></div><pre><code>docker compose -f docker/docker-compose.yml up -d db
+./marreq-core/scripts/db_setup.sh --seed
+cargo run -p marreq-server
+cd frontend &amp;&amp; npm install &amp;&amp; npm run dev</code></pre></div></div>
+          <div class="explore__panel" role="tabpanel" id="panel-guide" aria-labelledby="tab-guide" data-panel="guide" hidden><div class="developer-copy"><h3>Use the web interface</h3><p>Work with hierarchy, approvals, verification, matrices, baselines, project authorization, and exchange formats.</p><p class="doc-links"><a href="https://github.com/MarreqSW/Marreq/tree/main/docs/user-manual" target="_blank" rel="noopener noreferrer">User manual</a><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Docs index</a></p></div><ul class="developer-topics"><li>Requirements and versions</li><li>Verification records</li><li>Traceability and coverage</li><li>Baselines and exchange</li></ul></div>
+          <div class="explore__panel" role="tabpanel" id="panel-api" aria-labelledby="tab-api" data-panel="api" hidden><div class="developer-copy"><h3>HTTP API</h3><p>JSON under <code>/api</code>, with session authentication for the browser and Bearer tokens for headless clients.</p><p class="doc-links"><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/http-api-contract.md" target="_blank" rel="noopener noreferrer">HTTP contract</a><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/openapi.yaml" target="_blank" rel="noopener noreferrer">OpenAPI</a></p></div><div class="terminal terminal--compact" tabindex="0"><pre><code>curl -s http://127.0.0.1:8000/api/auth/me
+curl -s http://127.0.0.1:8000/api/projects</code></pre></div></div>
+          <div class="explore__panel" role="tabpanel" id="panel-architecture" aria-labelledby="tab-architecture" data-panel="architecture" hidden><div class="developer-copy"><h3>Technology and layout</h3><p>Rust, Rocket, Diesel and PostgreSQL behind a React 19 and TypeScript interface.</p><p class="doc-links"><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/developer/workspace-layout.md" target="_blank" rel="noopener noreferrer">Workspace layout</a><a href="https://github.com/MarreqSW/Marreq/blob/main/docs/architecture/database-schema.md" target="_blank" rel="noopener noreferrer">Database schema</a></p></div><ul class="developer-topics"><li>Rust workspace</li><li>React SPA</li><li>PostgreSQL + optional pgvector</li><li>ReqIF, Excel and MCP integrations</li></ul></div>
+        </div>
+      </div><noscript><style>.explore__panel[hidden]{display:grid!important;margin-top:2rem}</style></noscript></div>
+    </section>
+
+    <section class="stage closing" id="contact" data-stage="contact">
+      <div class="content-shell closing__layout"><div data-reveal><p class="stage-kicker stage-kicker--dark"><span>08</span> Open-source project</p><h2>Use Marreq.<br>Help shape it.</h2><p>Bring disciplined requirements and verification management to your engineering work—on the hosted application or your own infrastructure.</p><div class="action-row"><a class="btn btn--light" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a><a class="btn btn--ghost" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View source</a></div></div><div class="closing__contacts" data-reveal="media"><article><p>Project enquiries</p><a href="mailto:contact@marreq.com">contact@marreq.com</a><span>Questions, feedback, deployments, integrations.</span></article><article><p>Sponsorship</p><a href="mailto:sponsorship@marreq.com">sponsorship@marreq.com</a><span>Support infrastructure, documentation, and development.</span></article></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="content-shell site-footer__inner"><div><a class="brand" href="#top"><img src="logo.png" alt="" width="36" height="25"><span>Marreq</span></a><p>Open-source requirements and verification management.</p></div><nav aria-label="Footer"><a href="#requirements">Product</a><a href="#traceability">Traceability</a><a href="#baselines">Baselines</a><a href="#developers">Developers</a><a href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:contact@marreq.com">Contact</a></nav></div><div class="content-shell site-footer__bottom"><span>© 2026 Marreq</span><span>Licensed under AGPL-3.0</span></div></footer>
+  <div id="screenshotModal" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden><div class="lightbox__overlay" data-lightbox-close></div><div class="lightbox__dialog"><button type="button" class="lightbox__close" data-lightbox-close aria-label="Close screenshot viewer"><span aria-hidden="true">×</span></button><button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous screenshot">‹</button><button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next screenshot">›</button><div class="lightbox__image-wrap"><img id="modalImage" class="lightbox__image" alt=""></div><p id="lightbox-caption" class="lightbox__caption"></p></div></div>
+  <script type="module" src="theme.js"></script><script type="module" src="main.js"></script><script src="screenshot-lightbox.js" defer></script>
 </body>
-
 </html>
