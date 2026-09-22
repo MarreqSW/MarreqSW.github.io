@@ -116,7 +116,6 @@
     <section class="hero" id="top">
       <div class="shell hero__grid">
         <div class="hero__copy">
-          <p class="hero__brand">Marreq</p>
           <p class="eyebrow">Open source requirements engineering</p>
           <h1>Requirements engineering, without losing traceability.</h1>
           <p class="hero__lede">
@@ -182,58 +181,12 @@
           </aside>
         </div>
 
-        <ul class="capability-row" aria-label="Core capabilities">
-          <li><strong>Requirements</strong> Versioned and structured</li>
-          <li><strong>Traceability</strong> Requirements ↔ verification</li>
-          <li><strong>Baselines</strong> Immutable snapshots</li>
-          <li><strong>Open ecosystem</strong> ReqIF · REST · MCP</li>
-        </ul>
-
-        <div class="bento">
-          <article class="bento__item bento__item--feature">
-            <h3>Requirements</h3>
-            <p>Version every change. Keep the complete history.</p>
-            <div class="micro micro--versions" aria-hidden="true">
-              <span>v7 Approved</span>
-              <span>v6 Reviewed</span>
-              <span>v5 Draft</span>
-            </div>
-          </article>
-          <article class="bento__item">
-            <h3>Traceability</h3>
-            <p>Cover requirements with verifications. Surface suspect links.</p>
-            <div class="micro micro--trace" aria-hidden="true">
-              <span>REQ-042</span><span class="micro__line"></span><span>VER-014</span>
-            </div>
-          </article>
-          <article class="bento__item">
-            <h3>Baselines</h3>
-            <p>Freeze requirement versions and the matrix at a point in time.</p>
-          </article>
-          <article class="bento__item">
-            <h3>Approval</h3>
-            <p>Draft → Reviewed → Approved, with project reviewers.</p>
-            <div class="status-flow" aria-hidden="true">
-              <span class="pill pill--draft">Draft</span>
-              <span>→</span>
-              <span class="pill pill--reviewed">Reviewed</span>
-              <span>→</span>
-              <span class="pill pill--approved">Approved</span>
-            </div>
-          </article>
-          <article class="bento__item">
-            <h3>ReqIF &amp; Excel</h3>
-            <p>Import and export live projects or baselines.</p>
-          </article>
-          <article class="bento__item">
-            <h3>API</h3>
-            <p>Project-scoped REST/JSON with session or Bearer auth.</p>
-          </article>
-          <article class="bento__item bento__item--wide">
-            <h3>MCP</h3>
-            <p>Optional tools for AI assistants—controlled modes from read-only to draft and trace write, with audit events. Requirements remain the core product.</p>
-          </article>
-        </div>
+        <dl class="capability-row" aria-label="Core capabilities">
+          <div><dt>Requirements</dt><dd>Versioned &amp; structured</dd></div>
+          <div><dt>Traceability</dt><dd>Requirements ↔ verification</dd></div>
+          <div><dt>Baselines</dt><dd>Immutable snapshots</dd></div>
+          <div><dt>Open ecosystem</dt><dd>ReqIF · REST · MCP</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -354,10 +307,6 @@
             <button type="button" class="tour__tile" data-screenshot="screenshots/categories.png" data-caption="Categories and applicability — project-scoped organization">
               <img src="screenshots/categories.png" alt="Marreq categories management" width="1920" height="1080" loading="lazy" decoding="async">
               <span class="tour__caption">Categories</span>
-            </button>
-            <button type="button" class="tour__tile" data-screenshot="screenshots/dashboard.png" data-caption="Dashboard — project overview and traceability health">
-              <img src="screenshots/dashboard.png" alt="Marreq dashboard" width="1920" height="1080" loading="lazy" decoding="async">
-              <span class="tour__caption">Dashboard</span>
             </button>
           </div>
         </div>
@@ -544,30 +493,29 @@ curl -s http://127.0.0.1:8000/api/projects</code></pre>
       </div>
     </section>
 
-    <!-- 7. Contact + final CTA -->
-    <section class="band band--contact" id="contact">
-      <div class="shell contact-split">
-        <div>
-          <p class="side-label">Contact</p>
-          <h2>Get in touch</h2>
-          <p>Questions, feedback, deployment discussions, integrations, and collaboration.</p>
-          <a class="btn btn--secondary" href="mailto:contact@marreq.com">contact@marreq.com</a>
+    <!-- 7. Closing — Contact + Final CTA in one dark environment -->
+    <section class="closing" id="contact">
+      <div class="shell closing__inner">
+        <div class="closing__cta" id="try">
+          <p class="eyebrow eyebrow--on-dark">Try Marreq</p>
+          <h2>Start managing requirements with Marreq.</h2>
+          <div class="closing__actions">
+            <a class="btn btn--on-dark" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a>
+            <a class="btn btn--ghost-on-dark" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View source</a>
+          </div>
         </div>
-        <div>
-          <p class="side-label">Sponsorship</p>
-          <h2>Support Marreq</h2>
-          <p>Interested in supporting development, infrastructure, documentation, or integrations? Reach out to discuss how you might help the open-source project.</p>
-          <a class="btn btn--secondary" href="mailto:sponsorship@marreq.com">sponsorship@marreq.com</a>
-        </div>
-      </div>
-    </section>
 
-    <section class="final-cta" id="try">
-      <div class="shell final-cta__inner">
-        <h2>Start managing requirements with Marreq.</h2>
-        <div class="hero__actions">
-          <a class="btn btn--on-dark" href="https://app.marreq.com" target="_blank" rel="noopener noreferrer">Try Marreq</a>
-          <a class="btn btn--ghost-on-dark" href="https://github.com/MarreqSW/Marreq" target="_blank" rel="noopener noreferrer">View source</a>
+        <div class="closing__contact">
+          <div>
+            <p class="closing__label">Get in touch</p>
+            <p class="closing__body">Questions, feedback, deployments, integrations.</p>
+            <a class="closing__mail" href="mailto:contact@marreq.com">contact@marreq.com</a>
+          </div>
+          <div>
+            <p class="closing__label">Support Marreq</p>
+            <p class="closing__body">Sponsor infrastructure, documentation, and continued development.</p>
+            <a class="closing__mail" href="mailto:sponsorship@marreq.com">sponsorship@marreq.com</a>
+          </div>
         </div>
       </div>
     </section>
