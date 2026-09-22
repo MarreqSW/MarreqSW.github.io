@@ -50,6 +50,21 @@
     }
   }
 
+  function keepFocusInside(event) {
+    if (event.key !== "Tab" || modal.hidden) return;
+    const controls = Array.from(modal.querySelectorAll("button:not([disabled])"));
+    if (!controls.length) return;
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function showNext(delta) {
     index = (index + delta + items.length) % items.length;
     render();
@@ -74,6 +89,7 @@
 
   document.addEventListener("keydown", (event) => {
     if (modal.hidden) return;
+    keepFocusInside(event);
     if (event.key === "Escape") close();
     if (event.key === "ArrowLeft") showNext(-1);
     if (event.key === "ArrowRight") showNext(1);

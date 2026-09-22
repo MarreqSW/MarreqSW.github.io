@@ -1,6 +1,6 @@
-/**
- * Site interactions: sticky header, mobile nav, smooth anchors, developer tabs.
- */
+/** Site interactions: navigation, tabs, staged reveals, and active scene state. */
+document.documentElement.classList.add("js");
+
 const header = document.querySelector("[data-site-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const mobileNav = document.querySelector("[data-mobile-nav]");
@@ -98,8 +98,59 @@ function initTabs() {
   });
 }
 
+function initStageMotion() {
+  const items = document.querySelectorAll("[data-reveal]");
+  if (!items.length) return;
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.16, rootMargin: "0px 0px -6%" });
+
+  items.forEach((item) => observer.observe(item));
+}
+
+function initStageProgress() {
+  const stages = Array.from(document.querySelectorAll("[data-stage]"));
+  const links = Array.from(document.querySelectorAll("[data-stage-link]"));
+  const rail = document.querySelector("[data-stage-rail]");
+  if (!stages.length || !links.length || !("IntersectionObserver" in window)) return;
+
+  function activate(id, isDark) {
+    links.forEach((link) => {
+      const active = link.dataset.stageLink === id;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+    if (rail) rail.classList.toggle("is-on-dark", isDark);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    const stage = visible.target;
+    activate(stage.dataset.stage, stage.classList.contains("traceability") || stage.classList.contains("closing"));
+  }, { threshold: [0.3, 0.5, 0.7], rootMargin: "-20% 0px -20%" });
+
+  stages.forEach((stage) => observer.observe(stage));
+  activate(stages[0].dataset.stage, false);
+}
+
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
 initMobileNav();
 initSmoothAnchors();
 initTabs();
+initStageMotion();
+initStageProgress();
