@@ -265,13 +265,13 @@ code { font-family: var(--font-mono); }
 .site-footer__bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--text-3); font-size: .85rem; }
 
 /* Stage progress */
-.stage-rail { position: fixed; z-index: 90; top: 50%; right: max(1rem, calc((100vw - var(--page-max)) / 2 + .75rem)); display: grid; gap: .5rem; transform: translateY(-50%); }
-.stage-rail a { display: flex; height: 1.2rem; align-items: center; justify-content: flex-end; gap: .65rem; color: var(--text-3); font: 500 .62rem/1 var(--font-mono); text-decoration: none; }
-.stage-rail b { position: absolute; right: 2rem; padding: .35rem .5rem; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text); font-weight: 500; opacity: 0; pointer-events: none; transform: translateX(.35rem); transition: 160ms ease; white-space: nowrap; }
+.stage-rail { position: fixed; z-index: 90; top: 50%; right: clamp(.25rem, .65vw, .75rem); display: grid; gap: .5rem; transform: translateY(-50%); }
+.stage-rail a { display: flex; height: 1.2rem; align-items: center; justify-content: flex-end; gap: .45rem; color: var(--text-3); font: 500 .6rem/1 var(--font-mono); text-decoration: none; }
+.stage-rail b { position: absolute; right: 1.8rem; padding: .35rem .5rem; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text); font-weight: 500; opacity: 0; pointer-events: none; transform: translateX(.35rem); transition: 160ms ease; white-space: nowrap; }
 .stage-rail a:hover b, .stage-rail a:focus-visible b { opacity: 1; transform: none; }
-.stage-rail a::after { content: ""; width: 1.1rem; height: 1px; background: currentColor; transition: width 180ms ease, background-color 180ms ease; }
+.stage-rail a::after { content: ""; width: .9rem; height: 1px; background: currentColor; transition: width 180ms ease, background-color 180ms ease; }
 .stage-rail a.is-active { color: var(--brand); }
-.stage-rail a.is-active::after { width: 1.8rem; height: 2px; background: var(--brand); }
+.stage-rail a.is-active::after { width: 1.5rem; height: 2px; background: var(--brand); }
 .stage-rail.is-on-dark a { color: #8291a7; }
 .stage-rail.is-on-dark a.is-active { color: #8bb8ff; }
 .stage-rail.is-on-dark a.is-active::after { background: #8bb8ff; }
